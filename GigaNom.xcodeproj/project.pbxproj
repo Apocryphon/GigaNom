@@ -1,0 +1,294 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D4B973E61531188600EBE481 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B973E51531188600EBE481 /* UIKit.framework */; };
+		D4B973E81531188600EBE481 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B973E71531188600EBE481 /* Foundation.framework */; };
+		D4B973EA1531188600EBE481 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B973E91531188600EBE481 /* CoreGraphics.framework */; };
+		D4B973F01531188700EBE481 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D4B973EE1531188700EBE481 /* InfoPlist.strings */; };
+		D4B973F21531188700EBE481 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B973F11531188700EBE481 /* main.m */; };
+		D4B973F61531188700EBE481 /* GigaNomAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B973F51531188700EBE481 /* GigaNomAppDelegate.m */; };
+		D4B973F91531188700EBE481 /* GigaNomViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D4B973F81531188700EBE481 /* GigaNomViewController.m */; };
+		D4B973FC1531188700EBE481 /* GigaNomViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B973FA1531188700EBE481 /* GigaNomViewController_iPhone.xib */; };
+		D4B973FF1531188700EBE481 /* GigaNomViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4B973FD1531188700EBE481 /* GigaNomViewController_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		D4B973E11531188600EBE481 /* GigaNom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigaNom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4B973E51531188600EBE481 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D4B973E71531188600EBE481 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D4B973E91531188600EBE481 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D4B973ED1531188700EBE481 /* GigaNom-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GigaNom-Info.plist"; sourceTree = "<group>"; };
+		D4B973EF1531188700EBE481 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D4B973F11531188700EBE481 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D4B973F31531188700EBE481 /* GigaNom-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GigaNom-Prefix.pch"; sourceTree = "<group>"; };
+		D4B973F41531188700EBE481 /* GigaNomAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GigaNomAppDelegate.h; sourceTree = "<group>"; };
+		D4B973F51531188700EBE481 /* GigaNomAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GigaNomAppDelegate.m; sourceTree = "<group>"; };
+		D4B973F71531188700EBE481 /* GigaNomViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GigaNomViewController.h; sourceTree = "<group>"; };
+		D4B973F81531188700EBE481 /* GigaNomViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GigaNomViewController.m; sourceTree = "<group>"; };
+		D4B973FB1531188700EBE481 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GigaNomViewController_iPhone.xib; sourceTree = "<group>"; };
+		D4B973FE1531188700EBE481 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/GigaNomViewController_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D4B973DE1531188600EBE481 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B973E61531188600EBE481 /* UIKit.framework in Frameworks */,
+				D4B973E81531188600EBE481 /* Foundation.framework in Frameworks */,
+				D4B973EA1531188600EBE481 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D4B973D61531188300EBE481 = {
+			isa = PBXGroup;
+			children = (
+				D4B973EB1531188600EBE481 /* GigaNom */,
+				D4B973E41531188600EBE481 /* Frameworks */,
+				D4B973E21531188600EBE481 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D4B973E21531188600EBE481 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D4B973E11531188600EBE481 /* GigaNom.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D4B973E41531188600EBE481 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D4B973E51531188600EBE481 /* UIKit.framework */,
+				D4B973E71531188600EBE481 /* Foundation.framework */,
+				D4B973E91531188600EBE481 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D4B973EB1531188600EBE481 /* GigaNom */ = {
+			isa = PBXGroup;
+			children = (
+				D4B973F41531188700EBE481 /* GigaNomAppDelegate.h */,
+				D4B973F51531188700EBE481 /* GigaNomAppDelegate.m */,
+				D4B973F71531188700EBE481 /* GigaNomViewController.h */,
+				D4B973F81531188700EBE481 /* GigaNomViewController.m */,
+				D4B973FA1531188700EBE481 /* GigaNomViewController_iPhone.xib */,
+				D4B973FD1531188700EBE481 /* GigaNomViewController_iPad.xib */,
+				D4B973EC1531188600EBE481 /* Supporting Files */,
+			);
+			path = GigaNom;
+			sourceTree = "<group>";
+		};
+		D4B973EC1531188600EBE481 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D4B973ED1531188700EBE481 /* GigaNom-Info.plist */,
+				D4B973EE1531188700EBE481 /* InfoPlist.strings */,
+				D4B973F11531188700EBE481 /* main.m */,
+				D4B973F31531188700EBE481 /* GigaNom-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D4B973E01531188600EBE481 /* GigaNom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D4B974021531188700EBE481 /* Build configuration list for PBXNativeTarget "GigaNom" */;
+			buildPhases = (
+				D4B973DD1531188600EBE481 /* Sources */,
+				D4B973DE1531188600EBE481 /* Frameworks */,
+				D4B973DF1531188600EBE481 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GigaNom;
+			productName = GigaNom;
+			productReference = D4B973E11531188600EBE481 /* GigaNom.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D4B973D81531188300EBE481 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "UC Davis";
+			};
+			buildConfigurationList = D4B973DB1531188400EBE481 /* Build configuration list for PBXProject "GigaNom" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = D4B973D61531188300EBE481;
+			productRefGroup = D4B973E21531188600EBE481 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D4B973E01531188600EBE481 /* GigaNom */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D4B973DF1531188600EBE481 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B973F01531188700EBE481 /* InfoPlist.strings in Resources */,
+				D4B973FC1531188700EBE481 /* GigaNomViewController_iPhone.xib in Resources */,
+				D4B973FF1531188700EBE481 /* GigaNomViewController_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D4B973DD1531188600EBE481 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D4B973F21531188700EBE481 /* main.m in Sources */,
+				D4B973F61531188700EBE481 /* GigaNomAppDelegate.m in Sources */,
+				D4B973F91531188700EBE481 /* GigaNomViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D4B973EE1531188700EBE481 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4B973EF1531188700EBE481 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D4B973FA1531188700EBE481 /* GigaNomViewController_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4B973FB1531188700EBE481 /* en */,
+			);
+			name = GigaNomViewController_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		D4B973FD1531188700EBE481 /* GigaNomViewController_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D4B973FE1531188700EBE481 /* en */,
+			);
+			name = GigaNomViewController_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D4B974001531188700EBE481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D4B974011531188700EBE481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D4B974031531188700EBE481 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GigaNom/GigaNom-Prefix.pch";
+				INFOPLIST_FILE = "GigaNom/GigaNom-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D4B974041531188700EBE481 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "GigaNom/GigaNom-Prefix.pch";
+				INFOPLIST_FILE = "GigaNom/GigaNom-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D4B973DB1531188400EBE481 /* Build configuration list for PBXProject "GigaNom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4B974001531188700EBE481 /* Debug */,
+				D4B974011531188700EBE481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D4B974021531188700EBE481 /* Build configuration list for PBXNativeTarget "GigaNom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D4B974031531188700EBE481 /* Debug */,
+				D4B974041531188700EBE481 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D4B973D81531188300EBE481 /* Project object */;
+}

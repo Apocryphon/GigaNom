@@ -9,6 +9,7 @@
 #import "GigaNomViewController.h"
 #import "FeedEntry.h"
 #import "ASIHTTPRequest.h"
+#import "JSONKit.h"
 
 #define GIGAURL @"https://ajax.googleapis.com/ajax/services/feed/load?q=http://feeds.feedburner.com/ommalik&v=1.0"
 
@@ -79,17 +80,29 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request 
 {
-  NSLog(@"This is what the responseString looks like: %@", [request responseString]);
 
+  //  NSLog(@"This is what the responseString looks like: %@", [request responseString]);
+  if (request.responseStatusCode == 200) {
   
-  FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:request.url.absoluteString entryLink:@"1" entryContent:@"2" entrySnippet:@"3" entryDate:[NSDate date] entryCategories:[NSArray array]] autorelease];    
-  int insertIdx = 0;                    
-  [self.allEntries insertObject:entry atIndex:insertIdx];
-  [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath 
+    NSString *responseString = [request responseString];
+    
+    // is JSONValue in SBJson framework (parses JSON text in string)
+    NSDictionary *responseData = [responseString objectFromJSONString];
+    NSDictionary *jsonEntries = [[[responseData objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"];
+    NSLog(@"Peep this: %@", jsonEntries);
+
+
+    
+    
+    FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:request.url.absoluteString entryLink:@"1" entryContent:@"2" entrySnippet:@"3" entryDate:[NSDate date] entryCategories:[NSArray array]] autorelease];    
+    int insertIdx = 0;                    
+    [self.allEntries insertObject:entry atIndex:insertIdx];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath 
                                                                    indexPathForRow:insertIdx 
                                                                    inSection:0]]
                         withRowAnimation:UITableViewRowAnimationRight];
-  
+    
+  }
 }
 
 

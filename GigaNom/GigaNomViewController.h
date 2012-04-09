@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GigaNomViewController : UIViewController
+@interface GigaNomViewController : UITableViewController
+{
+  NSMutableArray *_allEntries;
+}
 
+@property (retain) NSMutableArray *allEntries;
 @end

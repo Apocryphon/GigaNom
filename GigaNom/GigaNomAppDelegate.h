@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) GigaNomViewController *viewController;
+@property (strong, nonatomic) GigaNomViewController *rootViewController;
 
 @end

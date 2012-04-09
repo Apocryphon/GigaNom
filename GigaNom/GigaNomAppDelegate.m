@@ -13,12 +13,11 @@
 @implementation GigaNomAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize rootViewController;
 
 - (void)dealloc
 {
   [_window release];
-  [_viewController release];
     [super dealloc];
 }
 
@@ -27,11 +26,19 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-      self.viewController = [[[GigaNomViewController alloc] initWithNibName:@"GigaNomViewController_iPhone" bundle:nil] autorelease];
+    self.rootViewController = [[GigaNomViewController alloc] init];
+    
+//      self.viewController = [[[GigaNomViewController alloc] initWithNibName:@"GigaNomViewController_iPhone" bundle:nil] autorelease];
   } else {
-      self.viewController = [[[GigaNomViewController alloc] initWithNibName:@"GigaNomViewController_iPad" bundle:nil] autorelease];
+    self.rootViewController = [[GigaNomViewController alloc] init];
+
+//      self.viewController = [[[GigaNomViewController alloc] initWithNibName:@"GigaNomViewController_iPad" bundle:nil] autorelease];
   }
-  self.window.rootViewController = self.viewController;
+  UINavigationController *navController = [[UINavigationController alloc]
+                                           initWithRootViewController:self.rootViewController];
+
+  // Place navigation controller's view in the window hierarchy
+  [[self window] setRootViewController:navController];
     [self.window makeKeyAndVisible];
     return YES;
 }

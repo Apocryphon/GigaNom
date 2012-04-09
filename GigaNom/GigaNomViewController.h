@@ -11,7 +11,9 @@
 @interface GigaNomViewController : UITableViewController
 {
   NSMutableArray *_allEntries;
+  NSOperationQueue *_queue;
 }
 
 @property (retain) NSMutableArray *allEntries;
+@property (retain) NSOperationQueue *queue;
 @end

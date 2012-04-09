@@ -8,10 +8,14 @@
 
 #import "GigaNomViewController.h"
 #import "FeedEntry.h"
+#import "ASIHTTPRequest.h"
+
+#define GIGAURL @"https://ajax.googleapis.com/ajax/services/feed/load?q=http://feeds.feedburner.com/ommalik&v=1.0"
 
 @implementation GigaNomViewController
 
 @synthesize allEntries = _allEntries;
+@synthesize queue = _queue;
 
 #pragma mark - Initializer
 
@@ -63,7 +67,40 @@
   return cell;
 }
 
-#pragma mark- Memory methods
+#pragma mark - RSS read operations
+
+- (void)refresh
+{
+  NSURL *url = [NSURL URLWithString:GIGAURL];
+  ASIHTTPRequest *request = [ASIHTTPRequest requestWithURL:url];
+  [request setDelegate:self];
+  [self.queue addOperation:request];
+}
+
+- (void)requestFinished:(ASIHTTPRequest *)request 
+{
+  NSLog(@"This is what the responseString looks like: %@", [request responseString]);
+
+  
+  FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:request.url.absoluteString entryLink:@"1" entryContent:@"2" entrySnippet:@"3" entryDate:[NSDate date] entryCategories:[NSArray array]] autorelease];    
+  int insertIdx = 0;                    
+  [self.allEntries insertObject:entry atIndex:insertIdx];
+  [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath 
+                                                                   indexPathForRow:insertIdx 
+                                                                   inSection:0]]
+                        withRowAnimation:UITableViewRowAnimationRight];
+  
+}
+
+
+- (void)requestFailed:(ASIHTTPRequest *)request 
+{
+  NSError *error = [request error];
+  NSLog(@"Error: %@", error);
+}
+
+
+#pragma mark - Memory methods
 
 - (void)didReceiveMemoryWarning
 {
@@ -75,6 +112,9 @@
 {
   [_allEntries release];
   _allEntries = nil;
+  [_queue release];
+  _queue = nil;
+  
   [super dealloc];
 }
 
@@ -83,7 +123,9 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
-  self.allEntries = [NSMutableArray array];  
+  self.allEntries = [NSMutableArray array];
+  self.queue = [[[NSOperationQueue alloc] init] autorelease];
+  [self refresh];
 
 }
 

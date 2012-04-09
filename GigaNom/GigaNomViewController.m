@@ -10,6 +10,7 @@
 #import "FeedEntry.h"
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
+#import "EntryDetailViewController.h"
 
 #define GIGAURL @"https://ajax.googleapis.com/ajax/services/feed/load?q=http://feeds.feedburner.com/ommalik&v=1.0"
 
@@ -17,6 +18,7 @@
 
 @synthesize allEntries = _allEntries;
 @synthesize queue = _queue;
+@synthesize entryViewController = _entryViewController;
 
 #pragma mark - Initializer
 
@@ -38,6 +40,11 @@
 
 #pragma mark - UITableViewDataSource delegate methods
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView 
+{
+  return 1;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   return [self.allEntries count];
@@ -57,8 +64,8 @@
   
   // format date for display
   NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
-  [dateFormatter setTimeStyle:NSDateFormatterMediumStyle];
-  [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+  [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+  [dateFormatter setDateStyle:NSDateFormatterShortStyle];
   NSString *entryDateString = [dateFormatter stringFromDate:entry.entryDate];
   
   /// change accordingly for custom cell style
@@ -66,6 +73,20 @@
   cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", entryDateString, entry.entrySnippet];
   
   return cell;
+}
+
+#pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+  if (self.entryViewController == nil) {
+    self.entryViewController = [[[EntryDetailViewController alloc] initWithNibName:@"EntryDetailViewController" bundle:[NSBundle mainBundle]] autorelease];
+  }
+  
+  FeedEntry *entry = [self.allEntries objectAtIndex:indexPath.row];
+  self.entryViewController.entry = entry;
+  [self.navigationController pushViewController:self.entryViewController animated:YES];
+  
 }
 
 #pragma mark - RSS read operations
@@ -80,29 +101,49 @@
 
 - (void)requestFinished:(ASIHTTPRequest *)request 
 {
-
-  //  NSLog(@"This is what the responseString looks like: %@", [request responseString]);
-  if (request.responseStatusCode == 200) {
   
-    NSString *responseString = [request responseString];
+  [self.queue addOperationWithBlock:^{
+
+    //  NSLog(@"This is what the responseString looks like: %@", [request responseString]);
     
-    // is JSONValue in SBJson framework (parses JSON text in string)
-    NSDictionary *responseData = [responseString objectFromJSONString];
-    NSDictionary *jsonEntries = [[[responseData objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"];
-    NSLog(@"Peep this: %@", jsonEntries);
+    if (request.responseStatusCode == 200) {
+    
+      NSString *responseString = [request responseString];
+      
+      NSDictionary *responseData = [responseString objectFromJSONString];
+      NSDictionary *jsonEntries = [[[responseData objectForKey:@"responseData"] objectForKey:@"feed"] objectForKey:@"entries"];
+  //    NSLog(@"Peep this: %@", jsonEntries);
+
+      [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+        
+        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss ZZZ"];
 
 
-    
-    
-    FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:request.url.absoluteString entryLink:@"1" entryContent:@"2" entrySnippet:@"3" entryDate:[NSDate date] entryCategories:[NSArray array]] autorelease];    
-    int insertIdx = 0;                    
-    [self.allEntries insertObject:entry atIndex:insertIdx];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath 
-                                                                   indexPathForRow:insertIdx 
-                                                                   inSection:0]]
-                        withRowAnimation:UITableViewRowAnimationRight];
-    
-  }
+        for (NSDictionary *jEntry in jsonEntries) {
+          FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:[jEntry objectForKey:@"title"] 
+                                                          entryLink:[jEntry objectForKey:@"link"]
+                                                       entryContent:[jEntry objectForKey:@"content"]
+                                                       entrySnippet:[jEntry objectForKey:@"contentSnippet"]
+                                                          entryDate:[dateFormatter dateFromString:[jEntry objectForKey:@"publishedDate"]]
+                                                    entryCategories:[jEntry objectForKey:@"categories"]] autorelease];    
+          int insertIdx = 0;                    
+          [self.allEntries insertObject:entry atIndex:insertIdx];
+          [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:[NSIndexPath 
+                                                                           indexPathForRow:insertIdx 
+                                                                           inSection:0]]
+                                withRowAnimation:UITableViewRowAnimationRight];
+
+          
+        }
+      }];
+      
+    } else {
+
+      NSLog(@"Error getting data: %@", [request responseString]);
+    }
+                                      
+  }];
 }
 
 
@@ -119,6 +160,7 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+  self.entryViewController = nil;
 }
 
 - (void)dealloc
@@ -127,7 +169,8 @@
   _allEntries = nil;
   [_queue release];
   _queue = nil;
-  
+  [_entryViewController release];
+  _entryViewController = nil;
   [super dealloc];
 }
 

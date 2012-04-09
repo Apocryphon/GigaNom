@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D43EBFE215335A7800FD356C /* EntryDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D43EBFE115335A7800FD356C /* EntryDetailViewController.xib */; };
+		D43EBFE615335A9C00FD356C /* EntryDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D43EBFE515335A9C00FD356C /* EntryDetailViewController.m */; };
 		D4469A3D15324FEB003F1EE3 /* FeedEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = D4469A3C15324FEB003F1EE3 /* FeedEntry.m */; };
 		D4B973E61531188600EBE481 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B973E51531188600EBE481 /* UIKit.framework */; };
 		D4B973E81531188600EBE481 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4B973E71531188600EBE481 /* Foundation.framework */; };
@@ -34,6 +36,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D43EBFE115335A7800FD356C /* EntryDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EntryDetailViewController.xib; sourceTree = "<group>"; };
+		D43EBFE415335A9C00FD356C /* EntryDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryDetailViewController.h; sourceTree = "<group>"; };
+		D43EBFE515335A9C00FD356C /* EntryDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryDetailViewController.m; sourceTree = "<group>"; };
 		D4469A3B15324FEB003F1EE3 /* FeedEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedEntry.h; sourceTree = "<group>"; };
 		D4469A3C15324FEB003F1EE3 /* FeedEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedEntry.m; sourceTree = "<group>"; };
 		D4B973E11531188600EBE481 /* GigaNom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GigaNom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +153,9 @@
 				D4B973F81531188700EBE481 /* GigaNomViewController.m */,
 				D4B973FA1531188700EBE481 /* GigaNomViewController_iPhone.xib */,
 				D4B973FD1531188700EBE481 /* GigaNomViewController_iPad.xib */,
+				D43EBFE415335A9C00FD356C /* EntryDetailViewController.h */,
+				D43EBFE515335A9C00FD356C /* EntryDetailViewController.m */,
+				D43EBFE115335A7800FD356C /* EntryDetailViewController.xib */,
 				D4B973EC1531188600EBE481 /* Supporting Files */,
 			);
 			path = GigaNom;
@@ -258,6 +266,7 @@
 				D4B973F01531188700EBE481 /* InfoPlist.strings in Resources */,
 				D4B973FC1531188700EBE481 /* GigaNomViewController_iPhone.xib in Resources */,
 				D4B973FF1531188700EBE481 /* GigaNomViewController_iPad.xib in Resources */,
+				D43EBFE215335A7800FD356C /* EntryDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +291,7 @@
 				D4D699E215326FBD00351351 /* ASINetworkQueue.m in Sources */,
 				D4D699E315326FBD00351351 /* Reachability.m in Sources */,
 				D4D699F31532725400351351 /* JSONKit.m in Sources */,
+				D43EBFE615335A9C00FD356C /* EntryDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

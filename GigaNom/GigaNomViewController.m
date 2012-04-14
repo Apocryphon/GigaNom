@@ -11,6 +11,7 @@
 #import "ASIHTTPRequest.h"
 #import "JSONKit.h"
 #import "EntryDetailViewController.h"
+#import "EntryTableViewCell.h"
 
 #define GIGAURL @"https://ajax.googleapis.com/ajax/services/feed/load?q=http://feeds.feedburner.com/ommalik&v=1.0"
 
@@ -53,24 +54,38 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
   static NSString *CellIdentifier = @"Cell";
-  
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle 
-                                   reuseIdentifier:CellIdentifier] autorelease];  /// change later to custom cell
-  }
+
   
   FeedEntry *entry = [self.allEntries objectAtIndex:indexPath.row];
   
   // format date for display
   NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
   [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-  [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+//  [dateFormatter setDateStyle:NSDateFormatterShortStyle];
   NSString *entryDateString = [dateFormatter stringFromDate:entry.entryDate];
   
-  /// change accordingly for custom cell style
-  cell.textLabel.text = entry.entryTitle;
-  cell.detailTextLabel.text = [NSString stringWithFormat:@"%@ - %@", entryDateString, entry.entrySnippet];
+  // format image for display
+//  UIImage *cellImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entry.en
+  
+  // get new or recycled cell
+  EntryTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"EntryDataViewCell"];
+  if (cell == nil) {
+    
+    NSArray* views = [[NSBundle mainBundle] loadNibNamed:@"EntryTableViewCell" owner:nil options:nil];
+    
+    for (UIView *view in views) {
+      if([view isKindOfClass:[UITableViewCell class]])
+      {
+        cell = (EntryTableViewCell *)view;
+      }
+    }
+  }
+  
+  // Cconfigure cell with FeedEntry data
+  cell.titleLabel.text = entry.entryTitle;
+  cell.snippetLabel.text = entry.entrySnippet;
+  cell.dateLabel.text = entryDateString;
+  [cell.articleImage setImage:[[UIImage alloc] initWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:entry.entryPicUrl]]]];
   
   return cell;
 }
@@ -120,9 +135,18 @@
         [dateFormatter setDateFormat:@"EEE, dd MMM yyyy HH:mm:ss ZZZ"];
 
 
-        for (NSDictionary *jEntry in jsonEntries) {
+        for (NSDictionary *jEntry in jsonEntries) {          
+          
+          NSString *picUrl = [[[[[jEntry objectForKey:@"mediaGroups"] objectAtIndex:0] 
+                                objectForKey:@"contents"] objectAtIndex:0] 
+                              objectForKey:@"url"];
+          
+//          NSLog(@"picUrl is: %@", picUrl);
+
+
           FeedEntry *entry = [[[FeedEntry alloc] initWithEntryTitle:[jEntry objectForKey:@"title"] 
                                                           entryLink:[jEntry objectForKey:@"link"]
+                                                        entryPicUrl:picUrl
                                                        entryContent:[jEntry objectForKey:@"content"]
                                                        entrySnippet:[jEntry objectForKey:@"contentSnippet"]
                                                           entryDate:[dateFormatter dateFromString:[jEntry objectForKey:@"publishedDate"]]
@@ -179,6 +203,10 @@
 - (void)viewDidLoad
 {
   [super viewDidLoad];
+  UINib *nib = [UINib nibWithNibName:@"EntryTableViewCell" bundle:nil];
+  
+  [self.tableView registerNib:nib forCellReuseIdentifier:@"EntryTableViewCell"];
+  [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
   self.allEntries = [NSMutableArray array];
   self.queue = [[[NSOperationQueue alloc] init] autorelease];
   [self refresh];

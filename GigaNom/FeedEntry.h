@@ -12,6 +12,7 @@
 {
   NSString *_entryTitle;
   NSString *_entryLink;
+  NSString *_entryPicUrl;
   NSString *_entryContent;
   NSString *_entrySnippet;
   NSDate *_entryDate;
@@ -21,13 +22,15 @@
 
 @property (copy) NSString *entryTitle;
 @property (copy) NSString *entryLink;
+@property (copy) NSString *entryPicUrl;
 @property (copy) NSString *entryContent;
 @property (copy) NSString *entrySnippet;
 @property (copy) NSDate *entryDate;
 @property (copy) NSArray *entryCategories;
 
 - (id)initWithEntryTitle:(NSString *)entryTitle 
-              entryLink:(NSString *)entryLink 
+              entryLink:(NSString *)entryLink
+             entryPicUrl:(NSString *)entryPicUrl
            entryContent:(NSString *)entryContent 
            entrySnippet:(NSString *)entrySnippet 
               entryDate:(NSDate *)entryDate  
